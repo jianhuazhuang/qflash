@@ -1,0 +1,67 @@
+Release Notes
+V1.3.2
+Release Data: 2017 - 11 - 09
+bug: fastboot升级成功但是提示错误的bug
+
+V1.3.3
+Release Data: 2017 - 11 - 13
+bug: 修复sahara进入streaming download忙等问题
+enhancement:
+feature: 增加整个升级过程时间统计
+
+V1.3.4
+Release Data: 2017 - 11 - 16
+bug: 修复升级分区不一样的版本，异常中断，模块无法启动的bug。
+
+V1.3.5
+Release Data: 2017 - 11 - 16
+bug: 修复主机驱动需要加入0包的问题。
+
+V1.4.0
+Release Data: 2017 - 12 - 14
+bug: 修复sahara进入streaming download忙等问题
+enhancement:
+增加-i参数，忽略1024全0字节发送
+支持USB3.0
+
+V1.4.1
+Release Data: 2018 - 02 - 23
+bug: 修复9x40在紧急模式下，input /output error 错误的bug。
+
+V1.4.2
+Release Data: 2018 - 03 - 02
+bug: none
+enhancement:
+增加md5校验功能；
+
+V1.4.3
+Release Data: 2018 - 04 - 02
+bug: 修复在某些时候异常掉电，程序进入死循环，不停打印log的问题。
+enhancement:
+
+V1.4.3
+Release Data: 2018 - 04 - 02
+bug: 修复在misc分区标记不清除，即使升级成功也模块也无法正常启动的bug；
+enhancement:
+
+V1.4.4
+Release Data: 2018 - 04 - 02
+bug: 修复在misc分区标记不清除，即使升级成功也模块也无法正常启动的bug；
+enhancement:
+
+V1.4.5
+Release Data: 2018 - 05 - 02
+bug: 紧急下载模式下，有些平台收不到hello 包导致升级失败的问题
+enhancement:
+增加firehose协议支持
+
+V1.4.6
+Release Data: 2018 - 05 - 22
+bug: 
+修复firehose升级特定版本失败的bug
+修复firehose不能升级工厂版本的bug
+
+V1.4.7
+Release Data: 2018 - 06 - 02
+bug: 
+修复firehose升级，小概率出现失败的问题。
