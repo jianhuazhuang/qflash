@@ -28,7 +28,7 @@ int at_tok_nextstr(char **p_cur, char **out);
 int at_tok_hasmore(char **p_cur);
 
 #if 1 //quectel
-int skipComma(char **p_cur); 
+int skipComma(char **p_cur);
 int at_tok_charcounter(char *p_cur, char *target, int *p_outcount);
 char* at_tok_getElementValue(const char *p_in, const char *beginTag, const char *endTag, char **remaining);
 #endif

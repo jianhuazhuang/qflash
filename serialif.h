@@ -6,10 +6,10 @@
 #include <netinet/in.h>
 
 
-extern unsigned char  dloadbuf[]; 
-extern unsigned char g_Receive_Buffer[]; 
-extern int g_Receive_Bytes;							
-extern unsigned char g_Transmit_Buffer[];	
+extern unsigned char  dloadbuf[];
+extern unsigned char g_Receive_Buffer[];
+extern int g_Receive_Bytes;
+extern unsigned char g_Transmit_Buffer[];
 extern int g_Transmit_Length;
 
 target_current_state send_sync(void);
@@ -29,48 +29,47 @@ int handle_quectel_download_flag(byte mode);
 /*------begin-------------sahara download protocol-------------------------*/
 
 
-typedef struct
-{
-	unsigned char cmd_code;
-	unsigned char version;
-	unsigned char reserved[2];
-	unsigned char msm[4];
-	unsigned char mobile_modle_number[4];
-	unsigned char mobile_software_revision[1];
-}__attribute__ ((packed))extended_build_id_response_t;
+typedef struct {
+    unsigned char cmd_code;
+    unsigned char version;
+    unsigned char reserved[2];
+    unsigned char msm[4];
+    unsigned char mobile_modle_number[4];
+    unsigned char mobile_software_revision[1];
+} __attribute__ ((packed))extended_build_id_response_t;
 
 
-typedef struct{
-	uint32 Command;
-	uint32 Length;
-	uint32 ImageID;
-	uint32 Status;
-}__attribute__((packed))end_of_image_transfer_packet_t;
+typedef struct {
+    uint32 Command;
+    uint32 Length;
+    uint32 ImageID;
+    uint32 Status;
+} __attribute__((packed))end_of_image_transfer_packet_t;
 
-typedef struct{
-	uint32 Command;
-	uint32 Length;
-	uint32 VersionNumber;
-	uint32 VersionCompatible;
-	uint32 CommandPacketLength;
-	uint32 Mode;
-	uint32 Reserved[6];
-}__attribute__((packed))hello_packet;
-
-
-typedef struct{
-	uint32 Command;
-	uint32 Length;
-	uint32 ImageID;
-	uint32 DataOffset;
-	uint32 DataLength;
-}__attribute__((packed))read_data_packet_t;
+typedef struct {
+    uint32 Command;
+    uint32 Length;
+    uint32 VersionNumber;
+    uint32 VersionCompatible;
+    uint32 CommandPacketLength;
+    uint32 Mode;
+    uint32 Reserved[6];
+} __attribute__((packed))hello_packet;
 
 
-typedef struct{
-	uint32 Command;
-	uint32 Length;
-}__attribute__((packed))sahara_header_t;
+typedef struct {
+    uint32 Command;
+    uint32 Length;
+    uint32 ImageID;
+    uint32 DataOffset;
+    uint32 DataLength;
+} __attribute__((packed))read_data_packet_t;
+
+
+typedef struct {
+    uint32 Command;
+    uint32 Length;
+} __attribute__((packed))sahara_header_t;
 
 /***********SHARA COMMAND*****************/
 #define SUCESS_OR_ERROR_STATE 			0x00000000  //Host sets this field based on the Hello packet received; if target protocol matches host and no other errors, a success value is sent.
@@ -85,37 +84,37 @@ typedef struct{
 #define HELLO_RESPONSE_PACKET_LENGTH 	0x00000030 //Length of packet (in bytes)
 #define RESET_PACKET 					0x00000007
 
-typedef enum{  
-	SAHARA_NO_CMD_ID          = 0x00,  
-	SAHARA_HELLO_ID           = 0x01, // sent from target to host  
-	SAHARA_HELLO_RESP_ID      = 0x02, // sent from host to target  
-	SAHARA_READ_DATA_ID       = 0x03, // sent from target to host  
-	SAHARA_END_IMAGE_TX_ID    = 0x04, // sent from target to host  
-	SAHARA_DONE_ID            = 0x05, // sent from host to target  
-	SAHARA_DONE_RESP_ID       = 0x06, // sent from target to host  
-	SAHARA_RESET_ID           = 0x07, // sent from host to target  
-	SAHARA_RESET_RESP_ID      = 0x08, // sent from target to host  
-	SAHARA_MEMORY_DEBUG_ID    = 0x09, // sent from target to host  
-	SAHARA_MEMORY_READ_ID     = 0x0A, // sent from host to target  
-	SAHARA_CMD_READY_ID       = 0x0B, // sent from target to host  
-	SAHARA_CMD_SWITCH_MODE_ID = 0x0C, // sent from host to target  
-	SAHARA_CMD_EXEC_ID        = 0x0D, // sent from host to target  
-	SAHARA_CMD_EXEC_RESP_ID   = 0x0E, // sent from target to host  
-	SAHARA_CMD_EXEC_DATA_ID   = 0x0F, // sent from host to target  
-	SAHARA_64_BITS_MEMORY_DEBUG_ID	= 0x10, // sent from target to host  
-	SAHARA_64_BITS_MEMORY_READ_ID		= 0x11, // sent from host to target  
-	SAHARA_64_BITS_READ_DATA_ID		= 0x12,  // place all new commands above this  
-	SAHARA_LAST_CMD_ID,  
-	SAHARA_MAX_CMD_ID             = 0x7FFFFFFF // To ensure 32-bits wide
+typedef enum {
+    SAHARA_NO_CMD_ID          = 0x00,
+    SAHARA_HELLO_ID           = 0x01, // sent from target to host
+    SAHARA_HELLO_RESP_ID      = 0x02, // sent from host to target
+    SAHARA_READ_DATA_ID       = 0x03, // sent from target to host
+    SAHARA_END_IMAGE_TX_ID    = 0x04, // sent from target to host
+    SAHARA_DONE_ID            = 0x05, // sent from host to target
+    SAHARA_DONE_RESP_ID       = 0x06, // sent from target to host
+    SAHARA_RESET_ID           = 0x07, // sent from host to target
+    SAHARA_RESET_RESP_ID      = 0x08, // sent from target to host
+    SAHARA_MEMORY_DEBUG_ID    = 0x09, // sent from target to host
+    SAHARA_MEMORY_READ_ID     = 0x0A, // sent from host to target
+    SAHARA_CMD_READY_ID       = 0x0B, // sent from target to host
+    SAHARA_CMD_SWITCH_MODE_ID = 0x0C, // sent from host to target
+    SAHARA_CMD_EXEC_ID        = 0x0D, // sent from host to target
+    SAHARA_CMD_EXEC_RESP_ID   = 0x0E, // sent from target to host
+    SAHARA_CMD_EXEC_DATA_ID   = 0x0F, // sent from host to target
+    SAHARA_64_BITS_MEMORY_DEBUG_ID	= 0x10, // sent from target to host
+    SAHARA_64_BITS_MEMORY_READ_ID		= 0x11, // sent from host to target
+    SAHARA_64_BITS_READ_DATA_ID		= 0x12,  // place all new commands above this
+    SAHARA_LAST_CMD_ID,
+    SAHARA_MAX_CMD_ID             = 0x7FFFFFFF // To ensure 32-bits wide
 } boot_sahara_cmd_id;
 
-typedef enum{  
-SAHARA_MODE_IMAGE_TX_PENDING  = 0x0,  
-SAHARA_MODE_IMAGE_TX_COMPLETE = 0x1,  
-SAHARA_MODE_MEMORY_DEBUG      = 0x2,  
-SAHARA_MODE_COMMAND           = 0x3,  // place all new commands above this  
-SAHARA_MODE_LAST,  
-SAHARA_MODE_MAX = 0x7FFFFFFF
+typedef enum {
+    SAHARA_MODE_IMAGE_TX_PENDING  = 0x0,
+    SAHARA_MODE_IMAGE_TX_COMPLETE = 0x1,
+    SAHARA_MODE_MEMORY_DEBUG      = 0x2,
+    SAHARA_MODE_COMMAND           = 0x3,  // place all new commands above this
+    SAHARA_MODE_LAST,
+    SAHARA_MODE_MAX = 0x7FFFFFFF
 } boot_sahara_mode;
 
 int sahara_done();
@@ -148,7 +147,7 @@ int retrieve_soft_revision();
 int ignore_dirty_data();
 int ReadSAHARABuffer(int file, unsigned char * lpBuf, int dwToRead);
 
-//hunter.lv add 
+//hunter.lv add
 //retrieve module soft revision
 
 #ifdef FIREHOSE_ENABLE

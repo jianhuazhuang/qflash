@@ -6,9 +6,9 @@
 #include <stddef.h>
 
 typedef struct md5_ctx {
-	uint32_t lo, hi;
-	uint32_t a, b, c, d;
-	unsigned char buffer[64];
+    uint32_t lo, hi;
+    uint32_t a, b, c, d;
+    unsigned char buffer[64];
 } md5_ctx_t;
 
 extern void md5_begin(md5_ctx_t *ctx);

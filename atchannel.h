@@ -89,27 +89,27 @@ void at_set_on_reader_closed(void (*onClose)(void));
 
 int at_send_command_singleline (const char *command,
                                 const char *responsePrefix,
-                                 ATResponse **pp_outResponse);
+                                ATResponse **pp_outResponse);
 
 int at_send_command_numeric (const char *command,
-                                 ATResponse **pp_outResponse);
+                             ATResponse **pp_outResponse);
 
 int at_send_command_multiline (const char *command,
-                                const char *responsePrefix,
-                                 ATResponse **pp_outResponse);
+                               const char *responsePrefix,
+                               ATResponse **pp_outResponse);
 
 int at_send_command_raw (const char *command,
-                                const char *raw_data, unsigned int raw_len,
-                                const char *responsePrefix,
-                                 ATResponse **pp_outResponse);
+                         const char *raw_data, unsigned int raw_len,
+                         const char *responsePrefix,
+                         ATResponse **pp_outResponse);
 
 int at_handshake();
 
 int at_send_command (const char *command, ATResponse **pp_outResponse);
 
 int at_send_command_sms (const char *command, const char *pdu,
-                            const char *responsePrefix,
-                            ATResponse **pp_outResponse);
+                         const char *responsePrefix,
+                         ATResponse **pp_outResponse);
 
 void at_response_free(ATResponse *p_response);
 
@@ -124,7 +124,7 @@ int logd(const char *fmt, ...);
 #define LOGD logd
 #define LOGE LOGD
 #else
-#define LOGD(fmt, args...) dbg_time(fmt, ##args);
+#define LOGD(fmt, args...) log_info(fmt, ##args);
 #define LOGE LOGD
 #endif
 

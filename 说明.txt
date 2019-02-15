@@ -1,0 +1,5 @@
+为了保持功能完整，需要把 Qfirehose_linux Qfastboot_linux 添加到 Qflash 源码目录。
+Qfirehose_linux 命名为 firehose；
+Qfastboot_linux 命名为fastboot；
+
+除非你只使用 Qflash -m 1 参数，否则，其他两个模块最好都要加进来

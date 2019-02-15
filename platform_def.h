@@ -32,15 +32,15 @@ using namespace std;
 typedef unsigned int 	   uint32;
 typedef bool  			   BOOL;
 typedef bool    	 	   boolean;
-typedef unsigned short	   uint16;		
+typedef unsigned short	   uint16;
 typedef unsigned char         byte;
 
-extern int g_hCom; 
+extern int g_hCom;
 
 
 #define WRITE_PACKET_LENGTH			1024 * 4
 
-void dbg_time (const char *fmt, ...);
+void log_info (const char *fmt, ...);
 
 #endif /*__PLATFORM_DEF_H__*/
 
